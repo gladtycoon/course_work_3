@@ -3,6 +3,8 @@ from src.hh_api import HeadHunterAPI
 
 
 def main():
+    DBManager.recreate_database()
+
     api = HeadHunterAPI()
     db = DBManager()
 

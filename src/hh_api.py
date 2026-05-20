@@ -5,6 +5,7 @@ from typing import Any, Dict, List
 import requests
 
 # class HeadHunter:
+# """ Класс для работы с API hh.ru """
 #     def __init__(self):
 #         self.url = "https://api.hh.ru/employers"
 #         self.headers = {'User-Agent': 'Course_work'}  # нужно по условию
@@ -22,12 +23,13 @@ import requests
 
 
 class HeadHunterAPI:
+    """ Класс для работы с data.json (потому что API hh.ru не дает доступ к данным) """
     def __init__(self):
         base_dir = os.path.dirname(os.path.dirname(__file__))
         self.data_file = os.path.join(base_dir, "data", "data.json")
 
     def get_employers(self) -> List[Dict[str, Any]]:
-        """Возвращает список всех работодателей из JSON"""
+        """ Получает список всех работодателей из JSON """
         with open(self.data_file, "r", encoding="utf-8") as f:
             data = json.load(f)
 
@@ -40,7 +42,7 @@ class HeadHunterAPI:
         return list(employers_map.values())
 
     def get_vacancies(self, employer_id: int) -> List[Dict[str, Any]]:
-        """Возвращает вакансии конкретного работодателя"""
+        """ Получает вакансии конкретного работодателя """
         with open(self.data_file, "r", encoding="utf-8") as f:
             data = json.load(f)
 
